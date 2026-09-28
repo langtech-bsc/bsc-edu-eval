@@ -76,15 +76,15 @@ git clone https://github.com/huggingface/evaluate
 The training can be launched with the following command:
 
 ```bash
-python train_classifier.py  \
- --dataset /path/to/dataset
- --model snowflake-arctic-embed-l-v2.0
- --freeze_base_model 1
- --output_dir /path/to/model/output/
- --max_seq_length 512
- --per_device_train_batch_size 16
- --per_device_eval_batch_size 16
- --is_regression 1
+python train_classifier.py \
+ --dataset /path/to/dataset \
+ --model snowflake-arctic-embed-l-v2.0 \
+ --freeze_base_model 1 \
+ --output_dir /path/to/model/output/ \
+ --max_seq_length 512 \
+ --per_device_train_batch_size 16 \
+ --per_device_eval_batch_size 16 \
+ --is_regression 1 \
  --wandb_project_name your-project-name
 ```
 
