@@ -1,0 +1,7 @@
+evaluate
+accelerate
+transformers==4.57.6
+wandb
+scikit-learn
+numpy
+datasets
