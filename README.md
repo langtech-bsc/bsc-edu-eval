@@ -56,3 +56,36 @@ The bundled files are the fixed BSC-EDU gold-truth set, with a combined file and
 - `data/bscedu-goldtruth-eus.jsonl`
 
 Each file contains `text` and its reference `label`, along with language metadata. The fixed English prompt uses zero examples and the 0-to-4 educational-value scale.
+
+## Train a Regression Model
+
+Using predicted scores, a dataset to train a regression model can be created. An example can be found in `convert_scores_to_dataset.py`.
+
+To train the model, install required packages and clone `evaluate` repository:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+```bash
+git clone https://github.com/huggingface/evaluate
+```
+
+The training can be launched with the following command:
+
+```bash
+python train_classifier.py  \
+ --dataset /path/to/dataset
+ --model snowflake-arctic-embed-l-v2.0
+ --freeze_base_model 1
+ --output_dir /path/to/model/output/
+ --max_seq_length 512
+ --per_device_train_batch_size 16
+ --per_device_eval_batch_size 16
+ --is_regression 1
+ --wandb_project_name your-project-name
+```
+
+The resulting model checkpoints will be saved in `output_dir`.
